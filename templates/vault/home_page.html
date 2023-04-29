@@ -1,0 +1,32 @@
+{% extends 'vault/base.html' %}
+
+{% block content %}
+Hello - {{user}}
+<hr>
+
+<div class="container">
+    {% for object in object_list %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{object.title}}</h5>
+          <p class="card-text">{{object.username}}</p>
+          <button onclick="copy_password(this)" data-value="{{object.password}}" class="btn btn-primary">Copy</button>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+{% endblock content %}
+
+{% block js %}
+
+<script>
+    function copy_password(element){
+        console.log('clicked - -- ')
+        var pass = $(element).attr("data-value")
+        navigator.clipboard.writeText(pass);
+
+        alert("Copied the text: " + pass);
+    }
+</script>
+
+{% endblock %}

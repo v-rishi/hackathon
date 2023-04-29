@@ -1,0 +1,15 @@
+{% extends 'vault/base.html' %}
+=
+{% block content %}
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            {{form.as_p}}
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+    <a href="{% url 'vault:login_view' %}" class="btn btn-secondary">Already Have an Account? Log In</a>
+</div>
+
+{% endblock content %}
